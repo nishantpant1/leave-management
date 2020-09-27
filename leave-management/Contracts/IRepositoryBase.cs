@@ -16,6 +16,8 @@ namespace leave_management.Contracts
 
         bool Delete(T entity);
 
+        bool IsExists(int id);
+
         bool Save();
     }
 }
