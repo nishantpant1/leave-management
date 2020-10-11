@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LeaveTypeVM>
+
+
+
+@{
+    ViewData["Title"] = "LeaveAllocation";
+}
+
+<hr />
+
+<table class="table" id="myDataTatble">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Allocate Leaves", "AllocateLeave", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#leaveAllocationTable').DataTable();
+        });
+    </script>
+}*@
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myDataTatble').DataTable();
+        });
+    </script>
+}

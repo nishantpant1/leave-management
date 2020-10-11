@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<EmployeeVM> 
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<table id="myDataTatble" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Allocate Leave", "Details", "LeaveAllocation", new { id = item.Id })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@*@section script
+{
+<script>
+    $(document).ready(function () {
+        $('#myDataTatble').DataTable();
+    })
+</script>
+}*@

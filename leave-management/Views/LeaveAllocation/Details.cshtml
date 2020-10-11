@@ -1,0 +1,56 @@
+﻿@model ViewAllocationVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details for  - @Model.Employee.Firstname, @Model.Employee.Lastname</h2>
+
+<hr />
+
+<div>
+    <dl class="row">
+        @*<dl> element represents description list. Encloses list of group of terms <dt>
+        Terms is used as kind of key and then <dd> is used as description of that particular terms.
+        Used basically in displaying metadata like details in key <dt> and value <dd> pair*@
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee.Firstname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.Firstname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee.Lastname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.Lastname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee.DateJoined)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.DateJoined)
+        </dd>
+    </dl>
+</div>
+
+<div class="card">
+    <ul class="list-group">
+        @foreach (var item in Model.LeaveAllocation)
+        {
+        <li class="list-group-item">
+            <h6>@item.LeaveType.Name <span class="badge badge-secondary"> @item.NumberOfDays </span> | <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="fade fa-pencil"></i> Edit </a></h6>
+        </li>
+        }
+    </ul>
+</div>
+<div>
+    @Html.ActionLink("Back To List", "Index")
+</div>
